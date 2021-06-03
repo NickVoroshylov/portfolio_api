@@ -8,5 +8,10 @@ class Portfolio(models.Model):
     description = models.TextField(max_length=500)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['owner', 'name'], name='unique_portfolio_name_for_user')
+        ]
+
     def __str__(self):
         return f"{self.owner} - {self.name}"
