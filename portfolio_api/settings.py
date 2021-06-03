@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
 
     # Internal apps
+    'accounts.apps.AccountsConfig',
     'portfolios',
 ]
 
