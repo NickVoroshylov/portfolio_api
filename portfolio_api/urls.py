@@ -18,19 +18,14 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import SimpleRouter
 
-from accounts.views import ProfileViewSet
-
-router = SimpleRouter()
-router.register(r'profile', ProfileViewSet, basename='user_profile')
+from accounts.urls import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('api/v1/', include(router.urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += router.urls
