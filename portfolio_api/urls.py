@@ -23,7 +23,7 @@ from rest_framework.routers import SimpleRouter
 from accounts.views import ProfileViewSet
 
 router = SimpleRouter()
-router.register(r'profile', ProfileViewSet)
+router.register(r'profile', ProfileViewSet, basename='user_profile')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
